@@ -4,7 +4,7 @@ exports.handler = async (event) => {
   if (password === '123') {
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true, dni: '80101534D' }),
+      body: JSON.stringify({ success: true, dni: '45082572L' }),
     };
   }
 
