@@ -1531,7 +1531,86 @@
 
 
 
+/* MODAL ANILLAS ZEBRA */
+.anillas-modal .modal-content {
+    background: white;
+    border-radius: 15px;
+    max-width: 500px;
+    margin: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
 
+.anillas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 14px;
+}
+
+.anillas-table th {
+    background: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    border: none;
+}
+
+.anillas-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.anillas-table tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.anillas-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.anillas-table tr:hover {
+    background-color: #e8f4fc;
+}
+
+.estado-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.estado-asignada {
+    background: #d4edda;
+    color: #155724;
+}
+
+.estado-pendiente {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.estado-no-asignada {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.estado-futuro {
+    background: #d6d8d9;
+    color: #383d41;
+}
+
+@media (max-width: 768px) {
+    .anillas-table {
+        font-size: 12px;
+    }
+    
+    .anillas-table th,
+    .anillas-table td {
+        padding: 8px;
+    }
+}
 
     
 </style>
@@ -1626,14 +1705,14 @@
                     
 
                 <div class="info-block">
-                    <div class="label">ANILLAS FEDERATIVAS HOMOLOGADAS OFICIALES DE:</div>
-                    <div class="dni-field" onclick="openModal('fecha')" style="cursor: pointer; position: relative;">
-                        <span class="dni-text">EE-E / ENTENTE EUROPEA ESPAÑA</span>
-
-                        <span class="icon-button" onclick="event.stopPropagation(); openModal('fecha')">⦾</span>
-                    
-                </div>
-            </div>
+    <div class="label">ANILLAS FEDERATIVAS HOMOLOGADAS OFICIALES DE:</div>
+    <div class="dni-field" onclick="openAnillasModal()" style="cursor: pointer; position: relative;">
+        <span class="dni-text">EE-E / ENTENTE EUROPEA ESPAÑA</span>
+        <span class="icon-button" onclick="event.stopPropagation(); openAnillasModal()">
+            <i class="fas fa-ring" style="font-size: 10px;"></i>
+        </span>
+    </div>
+</div>
 
 <div class="info-block">
                     <div class="label">FECHA DE VENCIMIENTO DEL CARNET:</div>
@@ -1893,7 +1972,112 @@
 
 
 
+<!-- MODAL ANILLAS -->
+<div id="anillasModal" class="modal anillas-modal">
+    <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <h2 class="modal-title">
+            <i class="fas fa-ring"></i> ANILLAS FEDERATIVAS
+        </h2>
+        <div class="modal-body-scrollable">
+            <div class="info-section">
+                <h3>EE-E / ENTENTE EUROPEA ESPAÑA</h3>
+                <p style="text-align: center; margin-bottom: 20px; color: #666;">
+                    Asignadas a: <strong>Pedro Garcia Castro</strong><br>
+                    Nº Criador: <strong>SF572L</strong>
+                </p>
+            </div>
 
+            <div class="info-section">
+                <h3>REGISTRO DE ANILLAS HOMOLOGADAS</h3>
+                <div style="overflow-x: auto;">
+                    <table class="anillas-table">
+                        <thead>
+                            <tr>
+                                <th>AÑO</th>
+                                <th>SERIE</th>
+                                <th>DIÁMETRO</th>
+                                <th>ESTADO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: #34495e !important; color: white;">
+                                <td style="font-weight: bold;">2026</td>
+                                <td>1344 - 1354</td>
+                                <td>3.0 mm</td>
+                                <td><span class="estado-badge estado-asignada">ASIGNADAS</span></td>
+                            </tr>
+                            <tr style="background-color: #34495e !important; color: white;">
+                                <td style="font-weight: bold;">2026</td>
+                                <td>1233 - 1243</td>
+                                <td>2.0 mm</td>
+                                <td><span class="estado-badge estado-asignada">ASIGNADAS</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight: bold;">2027</td>
+                                <td>1455 - 1465</td>
+                                <td>3.0 mm</td>
+                                <td><span class="estado-badge estado-pendiente">PENDIENTE</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">2027</td>
+                                <td>1355 - 1365</td>
+                                <td>2.0 mm</td>
+                                <td><span class="estado-badge estado-pendiente">PENDIENTE</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight: bold;">2028</td>
+                                <td>1566 - 1576</td>
+                                <td>3.0 mm</td>
+                                <td><span class="estado-badge estado-no-asignada">NO ASIGNADAS</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">2028</td>
+                                <td>1466 - 1476</td>
+                                <td>2.0 mm</td>
+                                <td><span class="estado-badge estado-no-asignada">NO ASIGNADAS</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight: bold;">2029</td>
+                                <td>1677 - 1687</td>
+                                <td>3.0 mm</td>
+                                <td><span class="estado-badge estado-futuro">FUTURO</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">2029</td>
+                                <td>1577 - 1587</td>
+                                <td>2.0 mm</td>
+                                <td><span class="estado-badge estado-futuro">FUTURO</span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td style="font-weight: bold;">2030</td>
+                                <td>1788 - 1798</td>
+                                <td>3.0 mm</td>
+                                <td><span class="estado-badge estado-futuro">FUTURO</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">2030</td>
+                                <td>1688 - 1698</td>
+                                <td>2.0 mm</td>
+                                <td><span class="estado-badge estado-futuro">FUTURO</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-actions">
+            <button class="modal-btn" onclick="closeModal()">
+                <i class="fas fa-check-circle"></i> CERRAR
+            </button>
+        </div>
+    </div>
+</div>
 
 
 
@@ -2427,6 +2611,29 @@ document.addEventListener("DOMContentLoaded", verificarVencimiento);
 
     
 
+
+// FUNCIÓN MODAL ANILLAS
+function openAnillasModal() {
+    closeModal();
+    document.getElementById('anillasModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// ACTUALIZA LA FUNCIÓN openModal (modifica esta existente)
+function openModal(modalType) {
+    closeModal();
+    if(modalType === 'anillas') {
+        openAnillasModal();
+    } else {
+        document.getElementById(modalType + 'Modal').classList.add('active');
+    }
+    document.body.style.overflow = 'hidden';
+}
+
+
+
+
+    
     
 </script>
 
