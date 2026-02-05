@@ -1620,28 +1620,34 @@
 
 
 
-/* Botón compartir */
+/* Botón compartir - SIN bordes redondos, color #bdccaf */
 .share-btn {
-    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-    color: white;
+    background: #bdccaf !important; /* COLOR EXACTO que quieres */
+    color: #000 !important; /* Texto negro para buen contraste */
     border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
+    padding: 8px 12px !important; /* Mismo padding que otros botones */
+    border-radius: 0px !important; /* SIN bordes redondeados */
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.75rem !important; /* Mismo tamaño que otros */
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    margin: 10px auto;
+    gap: 4px;
+    width: 100%;
+    justify-content: center;
+    transition: var(--transition);
+    margin: 0 !important; /* Quita margen extra */
+    font-weight: normal !important; /* Quita negrita */
 }
 
+/* Para el hover, un poco más oscuro del mismo color */
 .share-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+    background: #a8b89a !important; /* Versión más oscura para hover */
+    transform: none !important; /* Quita animación de subir */
+    box-shadow: none !important; /* Quita sombra */
 }
 
+/* OPCIONES COMPARTIR (mantén esto igual) */
 .share-options {
     display: none;
     flex-wrap: wrap;
@@ -1670,7 +1676,6 @@
 
 .share-option:hover {
     background: #e8f4fc;
-    transform: translateY(-3px);
 }
 
 .share-option i {
