@@ -1612,6 +1612,79 @@
     }
 }
 
+
+
+
+
+
+
+
+
+/* Botón compartir */
+.share-btn {
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    margin: 10px auto;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+.share-options {
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.share-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 70px;
+    text-decoration: none;
+    color: #333;
+}
+
+.share-option:hover {
+    background: #e8f4fc;
+    transform: translateY(-3px);
+}
+
+.share-option i {
+    font-size: 24px;
+}
+
+.share-option.whatsapp i { color: #25D366; }
+.share-option.telegram i { color: #0088cc; }
+.share-option.copy i { color: #6c757d; }
+.share-option.qr i { color: #007bff; }
+
+
+
+
     
 </style>
 
@@ -1843,7 +1916,39 @@
 
 
 
-            
+            <div class="footer-actions">
+    <button class="action-btn secondary" onclick="window.open('https://www.socnas.org/', '_blank')">
+        <i class="fas fa-info-circle"></i> ASOCIACIÓN ORNITOLÓGICA SOCNAS
+    </button>
+    
+    <!-- BOTÓN COMPARTIR NUEVO -->
+    <button class="action-btn share-btn" onclick="toggleShareOptions()">
+        <i class="fas fa-share-alt"></i> COMPARTIR CARNET
+    </button>
+</div>
+
+<!-- OPCIONES COMPARTIR (ocultas al principio) -->
+<div id="shareOptions" class="share-options">
+    <a href="https://wa.me/?text=Mira%20mi%20carnet%20digital%20SOCNAS%3A%20" target="_blank" class="share-option whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span>WhatsApp</span>
+    </a>
+    
+    <a href="https://t.me/share/url?url=&text=Mira%20mi%20carnet%20digital%20SOCNAS" target="_blank" class="share-option telegram">
+        <i class="fab fa-telegram"></i>
+        <span>Telegram</span>
+    </a>
+    
+    <div class="share-option copy" onclick="copyCarnetLink()">
+        <i class="fas fa-copy"></i>
+        <span>Copiar enlace</span>
+    </div>
+    
+    <div class="share-option qr" onclick="showQRShare()">
+        <i class="fas fa-qrcode"></i>
+        <span>QR</span>
+    </div>
+</div>
 
 
 
@@ -2635,6 +2740,73 @@ function openModal(modalType) {
 
 
 
+
+
+
+
+
+// FUNCIONES COMPARTIR
+function toggleShareOptions() {
+    const options = document.getElementById('shareOptions');
+    options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+}
+
+function copyCarnetLink() {
+    const link = window.location.href;
+    navigator.clipboard.writeText(link).then(() => {
+        alert('✅ Enlace copiado al portapapeles');
+    }).catch(err => {
+        alert('❌ Error al copiar: ' + err);
+    });
+}
+
+function showQRShare() {
+    // URL para QR
+    const url = window.location.href;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+    
+    // Modal para mostrar QR
+    const modalHTML = `
+        <div id="qrModal" class="modal" style="display: flex;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <h2 class="modal-title">
+                    <i class="fas fa-qrcode"></i> COMPARTIR CON QR
+                </h2>
+                <div style="text-align: center; padding: 20px;">
+                    <img src="${qrUrl}" alt="QR Carnet" style="width: 200px; height: 200px; border: 2px solid #eee; padding: 10px;">
+                    <p style="margin-top: 15px; color: #666;">
+                        Escanea este código QR para acceder al carnet
+                    </p>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-btn" onclick="closeModal()">
+                        <i class="fas fa-check-circle"></i> CERRAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Crear y mostrar modal
+    const modalContainer = document.createElement('div');
+    modalContainer.innerHTML = modalHTML;
+    document.body.appendChild(modalContainer);
+    
+    // Añadir función de cierre
+    window.closeModal = function() {
+        const modal = document.getElementById('qrModal');
+        if (modal) {
+            modal.remove();
+            document.body.style.overflow = '';
+        }
+    };
+}
+
+
+
+
+    
     
     
 </script>
@@ -2643,10 +2815,6 @@ function openModal(modalType) {
     
     
     
-
-
-
-
 
 
 
