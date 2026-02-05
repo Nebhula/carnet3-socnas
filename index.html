@@ -1926,20 +1926,14 @@
         <i class="fas fa-info-circle"></i> ASOCIACIÓN ORNITOLÓGICA SOCNAS
     </button>
     
-    <!-- BOTÓN COMPARTIR NUEVO -->
-    <button class="action-btn share-btn" onclick="toggleShareOptions()">
-        <i class="fas fa-share-alt"></i> COMPARTIR CARNET
-    </button>
-</div>
-
-<!-- OPCIONES COMPARTIR (ocultas al principio) -->
+   <!-- OPCIONES COMPARTIR (ocultas al principio) -->
 <div id="shareOptions" class="share-options">
-    <a href="https://wa.me/?text=Mira%20mi%20carnet%20digital%20SOCNAS%3A%20" target="_blank" class="share-option whatsapp">
+    <a href="#" onclick="shareWhatsApp()" class="share-option whatsapp">
         <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
     </a>
     
-    <a href="https://t.me/share/url?url=&text=Mira%20mi%20carnet%20digital%20SOCNAS" target="_blank" class="share-option telegram">
+    <a href="#" onclick="shareTelegram()" class="share-option telegram">
         <i class="fab fa-telegram"></i>
         <span>Telegram</span>
     </a>
@@ -1954,7 +1948,6 @@
         <span>QR</span>
     </div>
 </div>
-
 
 
 
@@ -2742,27 +2735,44 @@ function openModal(modalType) {
 
 
 
-// FUNCIONES COMPARTIR
+// FUNCIONES COMPARTIR CORREGIDAS
 function toggleShareOptions() {
     const options = document.getElementById('shareOptions');
     options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
 }
 
+function shareWhatsApp() {
+    const link = window.location.href;
+    const text = encodeURIComponent("Mira mi carnet digital SOCNAS: " + link);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+
+function shareTelegram() {
+    const link = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Mira mi carnet digital SOCNAS");
+    window.open(`https://t.me/share/url?url=${link}&text=${text}`, '_blank');
+}
+
 function copyCarnetLink() {
     const link = window.location.href;
     navigator.clipboard.writeText(link).then(() => {
-        alert('✅ Enlace copiado al portapapeles');
+        alert('✅ Enlace copiado al portapapeles: ' + link);
     }).catch(err => {
-        alert('❌ Error al copiar: ' + err);
+        // Fallback para navegadores antiguos
+        const textArea = document.createElement('textarea');
+        textArea.value = link;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        alert('✅ Enlace copiado al portapapeles');
     });
 }
 
 function showQRShare() {
-    // URL para QR
-    const url = window.location.href;
-    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+    const link = encodeURIComponent(window.location.href);
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${link}`;
     
-    // Modal para mostrar QR
     const modalHTML = `
         <div id="qrModal" class="modal" style="display: flex;">
             <div class="modal-content">
@@ -2775,8 +2785,14 @@ function showQRShare() {
                     <p style="margin-top: 15px; color: #666;">
                         Escanea este código QR para acceder al carnet
                     </p>
+                    <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                        Enlace: ${window.location.href}
+                    </p>
                 </div>
                 <div class="modal-actions">
+                    <button class="modal-btn" onclick="copyCarnetLink()" style="background: #bdccaf; color: #000;">
+                        <i class="fas fa-copy"></i> COPIAR ENLACE
+                    </button>
                     <button class="modal-btn" onclick="closeModal()">
                         <i class="fas fa-check-circle"></i> CERRAR
                     </button>
@@ -2785,24 +2801,19 @@ function showQRShare() {
         </div>
     `;
     
-    // Crear y mostrar modal
     const modalContainer = document.createElement('div');
     modalContainer.innerHTML = modalHTML;
     document.body.appendChild(modalContainer);
-    
-    // Añadir función de cierre
-    window.closeModal = function() {
-        const modal = document.getElementById('qrModal');
-        if (modal) {
-            modal.remove();
-            document.body.style.overflow = '';
-        }
-    };
+    document.body.style.overflow = 'hidden';
 }
 
-
-
-
+function closeModal() {
+    const modal = document.getElementById('qrModal');
+    if (modal) {
+        modal.remove();
+        document.body.style.overflow = '';
+    }
+}
     
     
     
