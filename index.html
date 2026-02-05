@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap @5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Carnet Digital para socios, federaciones y asociaciones SOCNAS DIGI</title>
+
+
+  
+
+
+
+
+
+
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
@@ -1444,7 +1453,21 @@
             font-size: 1rem;
         }
     }
+
+
+
+
+
+
+
+
+        
 </style>
+  
+
+
+
+
 <style>
 /* ARREGLO PARA MÓVILES - QUITAR MARGIN TOP */
 @media (max-width: 768px) {
@@ -1504,115 +1527,18 @@
     margin-top: 0 !important;
   }
 }
+
+
+
+
+
+
+    
 </style>
 
-<!-- NUEVO ESTILO PARA MODAL DE ANILLAS -->
-<style>
-    .anillas-modal .modal-content {
-        background: white;
-        border-radius: 15px;
-        max-width: 500px;
-        margin: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-    
-    .anillas-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 15px 0;
-        font-size: 14px;
-    }
-    
-    .anillas-table th {
-        background: #2c3e50;
-        color: white;
-        padding: 12px;
-        text-align: left;
-        font-weight: 600;
-        border: none;
-    }
-    
-    .anillas-table td {
-        padding: 12px;
-        border-bottom: 1px solid #eee;
-    }
-    
-    .anillas-table tr:nth-child(even) {
-        background-color: #f8f9fa;
-    }
-    
-    .anillas-table tr:hover {
-        background-color: #e8f4fc;
-    }
-    
-    .estado-badge {
-        padding: 4px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 600;
-        display: inline-block;
-    }
-    
-    .estado-asignada {
-        background: #d4edda;
-        color: #155724;
-    }
-    
-    .estado-pendiente {
-        background: #fff3cd;
-        color: #856404;
-    }
-    
-    .estado-no-asignada {
-        background: #f8d7da;
-        color: #721c24;
-    }
-    
-    .estado-futuro {
-        background: #d6d8d9;
-        color: #383d41;
-    }
-    
-    .leyenda-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        justify-content: center;
-        margin: 20px 0;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 10px;
-    }
-    
-    .leyenda-item {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        font-size: 12px;
-    }
-    
-    .leyenda-color {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-    
-    @media (max-width: 768px) {
-        .anillas-table {
-            font-size: 12px;
-        }
-        
-        .anillas-table th,
-        .anillas-table td {
-            padding: 8px;
-        }
-        
-        .leyenda-container {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-    }
-</style>
+
+
+
     
 </head>
 <body>
@@ -1701,13 +1627,13 @@
 
                 <div class="info-block">
                     <div class="label">ANILLAS FEDERATIVAS HOMOLOGADAS OFICIALES DE:</div>
-                    <div class="dni-field" onclick="openAnillasModal()" style="cursor: pointer; position: relative;">
+                    <div class="dni-field" onclick="openModal('fecha')" style="cursor: pointer; position: relative;">
                         <span class="dni-text">EE-E / ENTENTE EUROPEA ESPAÑA</span>
-                        <span class="icon-button" onclick="event.stopPropagation(); openAnillasModal()">
-                            <i class="fas fa-ring" style="font-size: 10px;"></i>
-                        </span>
-                    </div>
+
+                        <span class="icon-button" onclick="event.stopPropagation(); openModal('fecha')">⦾</span>
+                    
                 </div>
+            </div>
 
 <div class="info-block">
                     <div class="label">FECHA DE VENCIMIENTO DEL CARNET:</div>
@@ -1757,6 +1683,9 @@
       </div>
     </div>
   </div>
+
+
+
 </div>
 
 
@@ -1854,7 +1783,13 @@
                     <button class="action-btn secondary" onclick="window.open('https://www.socnas.org/', '_blank')">
     <i class="fas fa-info-circle"></i> ASOCIACIÓN ORNITOLÓGICA SOCNAS
 </button>
+
+                    
+
+                    
                 </div>
+
+                   
             </div>
         </div>
     </div>
@@ -1945,161 +1880,14 @@
     </div>
 </div>
 
-<!-- MODAL DE ANILLAS (NUEVO) -->
-<div id="anillasModal" class="modal anillas-modal">
-    <div class="modal-content">
-        <button class="modal-close" onclick="closeModal()">×</button>
-        <h2 class="modal-title">
-            <i class="fas fa-ring"></i> CONTROL DE ANILLAS FEDERATIVAS
-        </h2>
-        <div class="modal-body-scrollable">
-            <div class="info-section">
-                <h3>EE-E / ENTENTE EUROPEA ESPAÑA</h3>
-                <p style="text-align: center; margin-bottom: 20px; color: #666;">
-                    Asignadas a: <strong>Pedro Garcia Castro</strong><br>
-                    Nº Criador: <strong>SF572L</strong>
-                </p>
-            </div>
 
-            <div class="info-section">
-                <h3>REGISTRO DE ANILLAS HOMOLOGADAS</h3>
-                <div class="table-responsive" style="overflow-x: auto;">
-                    <table class="anillas-table">
-                        <thead>
-                            <tr>
-                                <th>AÑO</th>
-                                <th>SERIE</th>
-                                <th>DIÁMETRO</th>
-                                <th>ESTADO</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Fila 2026 - Gris marengo -->
-                            <tr style="background-color: #34495e; color: white;">
-                                <td style="font-weight: bold;">2026</td>
-                                <td>1344 - 1354</td>
-                                <td>3.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-asignada">ASIGNADAS</span>
-                                </td>
-                            </tr>
-                            <tr style="background-color: #34495e; color: white;">
-                                <td style="font-weight: bold;">2026</td>
-                                <td>1233 - 1243</td>
-                                <td>2.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-asignada">ASIGNADAS</span>
-                                </td>
-                            </tr>
-                            
-                            <!-- Fila 2027 - Color alternativo -->
-                            <tr style="background-color: #ecf0f1; color: #2c3e50;">
-                                <td style="font-weight: bold;">2027</td>
-                                <td>1455 - 1465</td>
-                                <td>3.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-pendiente">PENDIENTE</span>
-                                </td>
-                            </tr>
-                            <tr style="background-color: #ecf0f1; color: #2c3e50;">
-                                <td style="font-weight: bold;">2027</td>
-                                <td>1355 - 1365</td>
-                                <td>2.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-pendiente">PENDIENTE</span>
-                                </td>
-                            </tr>
-                            
-                            <!-- Fila 2028 - Color alternativo -->
-                            <tr style="background-color: #d5dbdb; color: #2c3e50;">
-                                <td style="font-weight: bold;">2028</td>
-                                <td>1566 - 1576</td>
-                                <td>3.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-no-asignada">NO ASIGNADAS</span>
-                                </td>
-                            </tr>
-                            <tr style="background-color: #d5dbdb; color: #2c3e50;">
-                                <td style="font-weight: bold;">2028</td>
-                                <td>1466 - 1476</td>
-                                <td>2.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-no-asignada">NO ASIGNADAS</span>
-                                </td>
-                            </tr>
-                            
-                            <!-- Fila 2029 - Color alternativo -->
-                            <tr style="background-color: #bdc3c7; color: #2c3e50;">
-                                <td style="font-weight: bold;">2029</td>
-                                <td>1677 - 1687</td>
-                                <td>3.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-futuro">FUTURO</span>
-                                </td>
-                            </tr>
-                            <tr style="background-color: #bdc3c7; color: #2c3e50;">
-                                <td style="font-weight: bold;">2029</td>
-                                <td>1577 - 1587</td>
-                                <td>2.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-futuro">FUTURO</span>
-                                </td>
-                            </tr>
-                            
-                            <!-- Fila 2030 - Color alternativo -->
-                            <tr style="background-color: #7f8c8d; color: white;">
-                                <td style="font-weight: bold;">2030</td>
-                                <td>1788 - 1798</td>
-                                <td>3.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-futuro">FUTURO</span>
-                                </td>
-                            </tr>
-                            <tr style="background-color: #7f8c8d; color: white;">
-                                <td style="font-weight: bold;">2030</td>
-                                <td>1688 - 1698</td>
-                                <td>2.0 mm</td>
-                                <td>
-                                    <span class="estado-badge estado-futuro">FUTURO</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div class="info-section">
-                <h3>LEYENDA DE ESTADOS</h3>
-                <div class="leyenda-container">
-                    <div class="leyenda-item">
-                        <div class="leyenda-color" style="background: #155724;"></div>
-                        <span>ASIGNADAS</span>
-                    </div>
-                    <div class="leyenda-item">
-                        <div class="leyenda-color" style="background: #856404;"></div>
-                        <span>PENDIENTES</span>
-                    </div>
-                    <div class="leyenda-item">
-                        <div class="leyenda-color" style="background: #721c24;"></div>
-                        <span>NO ASIGNADAS</span>
-                    </div>
-                    <div class="leyenda-item">
-                        <div class="leyenda-color" style="background: #383d41;"></div>
-                        <span>FUTURO</span>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal-actions">
-            <button class="modal-btn" onclick="closeModal()">
-                <i class="fas fa-check-circle"></i> CERRAR
-            </button>
-            <button class="modal-btn" onclick="window.open('https://www.entente-ee.com', '_blank')" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
-                <i class="fas fa-external-link-alt"></i> WEB OFICIAL
-            </button>
-        </div>
-    </div>
+
+
+
+
+
 </div>
 
 
@@ -2109,6 +1897,186 @@
 
 
 
+            
+
+<style>
+    #pwaTip {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        padding: 12px 15px;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+        display: none;
+        z-index: 10;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        border-top: 1px solid #eee;
+        animation: slideUp 0.20s ease-out;
+    }
+
+    .pwa-banner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        max-width: 100%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .pwa-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-grow: 1;
+        justify-content: flex-start;
+    }
+
+    .pwa-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        flex-shrink: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 4px;
+    }
+
+    .tip-text {
+        color: #000;
+        font-size: 14px;
+        line-height: 1.3;
+        flex-grow: 1;
+    }
+
+    #installBtn {
+        background: #74915b;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        min-width: 140px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: -55px;
+        right: 13px;
+        background: #FFCDD2;
+        border: 1px solid #eee;
+        color: #000;
+        font-size: 18px;
+        cursor: pointer;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.0s;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+    }
+
+    .close-btn:hover {
+        color: #f44336;
+        border-color: #f44336;
+        transform: rotate(90deg) scale(1.2);
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .pwa-content {
+            gap: 8px;
+        }
+
+        .tip-text {
+            font-size: 13px;
+        }
+
+        #installBtn {
+            padding: 8px 15px;
+            font-size: 13px;
+            min-width: 120px;
+        }
+
+        .pwa-icon {
+            width: 46px;
+            height: 46px;
+        }
+
+        .close-btn {
+            top: -25px;
+            right: 15px;
+        }
+    }
+</style>
+
+<div id="pwaTip">
+    <div class="pwa-banner">
+        <div class="pwa-content">
+            <img alt="App Icon" class="pwa-icon" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3A5UEEVLz5VDo5xNI7A3IIMk-OZD570vqw8zCuuNmWQmr1O6PVjBtTpTTNuAAdi3xZPDjB_mhb8cgW6UulPtea3zkptunh7i_pBvXZupizIYcsE0jWcLHKUbkkzAAuCAqO20-IGfh36KmAWvlVwSo4qgqPK9huSgPLnz-Nr1svjECOjMuuorEggJHVYo/s1600/541e0149-4131-465a-9899-3adfc6ccc879.jpg"/>
+            <div class="tip-text">PARA HACER TU CARNET ACCESIBLE?...</div>
+        </div>
+        <button id="installBtn">
+            <i class="fas fa-mobile-alt"></i>
+            INSTALAR APP
+        </button>
+        <button class="close-btn" id="closeTip">&#215;</button>
+    </div>
+</div>
+
+<script>
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        document.getElementById('pwaTip').style.display = 'block';
+    });
+
+    document.getElementById('installBtn').addEventListener('click', () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    document.getElementById('pwaTip').style.display = 'none';
+                }
+                deferredPrompt = null;
+            });
+        }
+    });
+
+    document.getElementById('closeTip').addEventListener('click', () => {
+        document.getElementById('pwaTip').style.display = 'none';
+    });
+
+    window.addEventListener('appinstalled', () => {
+        document.getElementById('pwaTip').style.display = 'none';
+    });
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('✅ SW registrado'))
+            .catch(err => console.error('❌ Error SW:', err));
+    }
+</script>
 
 
 
@@ -2129,6 +2097,95 @@
 
 
 
+
+
+
+
+
+
+<!-- Modal alternativo - Estilos inline completos
+<div id="modalVencido" style="
+  display: none;
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #000000 !important;
+  z-index: 2147483647 !important;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+">
+  <div style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  ">
+    <h1 style="font-size: 2.5em; margin: 0 0 20px; color: #ff4444; text-transform: uppercase;">
+      CARNET DIGITAL VENCIDO
+    </h1>
+    <p style="font-size: 1.8em; margin: 0 0 40px;">
+      CADUCADO
+    </p>
+    <a href="https://wa.me/34677163664" 
+       target="_blank"
+       style="
+         background: #25D366;
+         color: white;
+         padding: 18px 36px;
+         font-size: 1.3em;
+         text-decoration: none;
+         border-radius: 50px;
+         font-weight: bold;
+         display: inline-flex;
+         align-items: center;
+         gap: 12px;
+       ">
+      <i class="fab fa-whatsapp"></i> NECESITAS RENOVARLO
+    </a>
+  </div>
+</div>
+
+<script>
+function mostrarModal() {
+    const modal = document.getElementById('modalVencido');
+    if (!modal) return;
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+    console.log('✅ Modal mostrado correctamente');
+}
+
+// FECHA DE VENCIMIENTO
+const fechaVencimiento = new Date("2025-09-01T00:00:00"); // Ajusta aquí
+
+function verificarVencimiento() {
+    const ahora = new Date();
+    if (ahora >= fechaVencimiento) {
+        mostrarModal();
+    }
+}
+
+document.addEventListener("DOMContentLoaded", verificarVencimiento);
+</script>-->
+
+
+
+
+
+
+
+
+
+
+    
 
 
 <!-- REVERSO (SOLO PARA MÓVILES) -->
@@ -2346,19 +2403,12 @@
 <script>
     function openModal(modalType) {
         closeModal();
-        if(modalType === 'anillas') {
-            document.getElementById('anillasModal').style.display = 'flex';
-        } else {
-            document.getElementById(modalType + 'Modal').classList.add('active');
-        }
+        document.getElementById(modalType + 'Modal').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-        document.querySelectorAll('.modal').forEach(m => {
-            m.classList.remove('active');
-            m.style.display = 'none';
-        });
+        document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
         document.body.style.overflow = '';
     }
 
@@ -2373,14 +2423,40 @@
         document.body.style.overflow = '';
     }
 
-    // NUEVA FUNCIÓN PARA EL MODAL DE ANILLAS
-    function openAnillasModal() {
-        closeModal();
-        document.getElementById('anillasModal').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
+   
+
+    
+
     
 </script>
+
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+  
     
 </body>
 </html>
