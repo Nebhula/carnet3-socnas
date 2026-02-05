@@ -2735,7 +2735,10 @@ function openModal(modalType) {
 
 
 
-// FUNCIONES COMPARTIR CORREGIDAS
+// ============================================
+// FUNCIONES COMPARTIR CARNET (CORREGIDAS)
+// ============================================
+
 function toggleShareOptions() {
     const options = document.getElementById('shareOptions');
     options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
@@ -2776,7 +2779,7 @@ function showQRShare() {
     const modalHTML = `
         <div id="qrModal" class="modal" style="display: flex;">
             <div class="modal-content">
-                <button class="modal-close" onclick="closeModal()">×</button>
+                <button class="modal-close" onclick="closeQRModal()">×</button>
                 <h2 class="modal-title">
                     <i class="fas fa-qrcode"></i> COMPARTIR CON QR
                 </h2>
@@ -2793,7 +2796,7 @@ function showQRShare() {
                     <button class="modal-btn" onclick="copyCarnetLink()" style="background: #bdccaf; color: #000;">
                         <i class="fas fa-copy"></i> COPIAR ENLACE
                     </button>
-                    <button class="modal-btn" onclick="closeModal()">
+                    <button class="modal-btn" onclick="closeQRModal()">
                         <i class="fas fa-check-circle"></i> CERRAR
                     </button>
                 </div>
@@ -2807,7 +2810,8 @@ function showQRShare() {
     document.body.style.overflow = 'hidden';
 }
 
-function closeModal() {
+// FUNCIÓN PARA CERRAR MODAL QR (NOMBRE DIFERENTE)
+function closeQRModal() {
     const modal = document.getElementById('qrModal');
     if (modal) {
         modal.remove();
